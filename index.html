@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Encryptor</title>
+  </head>
+
+  <body>
+  
+    <div class="header">
+      <input class="filePath" type="text" placeholder="Here opened or downloaded file name" title="File name" />
+      <img id="open" class="icon" src="icons\OpenFile.svg" title="Open File" onclick="open_file()"/>
+      <img id="create" class="icon" src="icons\CreateFile.svg" title="Create File" onclick="create_file()"/>
+      <img id="encrypt" class="icon" src="icons\Encrypt.svg" title="Encrypt File" onclick="encrypt_file()"/>
+      <img id="decrypt" class="icon" src="icons\Decrypt.svg" title="Decrypt File" onclick="decrypt_file()"/>
+      <select id="ciphers" onchange="selectCipher(this.value);">
+        <option value="caesar">Caesar</option>
+        <option value="trithemius">Trithemius</option>
+        <option value="xor">XOR</option>
+        <option value="des">DES</option>
+        <option value="tdes">TripleDES</option>
+        <option value="aes">AES</option>
+      </select>
+      <input id="caesar_shift" type="number" min="1" max="32" value="1" />
+      <select id="des_modes" hidden>
+        <option value="CBC">CBC</option>
+        <option value="CFB">CFB</option>
+        <option value="CTS">CTS</option>
+        <option value="ECB">ECB</option>
+        <option value="OFB">OFB</option>
+      </select>
+      <img id="generate" class="icon" style="width: 1.25em;" src="icons\Generate.svg" title="Generate Key" onclick="generate()" hidden/>
+
+      <select id="trithemiusTypes" style="display: none;" onchange="selectTrithemiusTypes(this.value);">
+        <option value="linear">Linear</option>
+        <option value="non-linear">Non-linear</option>
+        <option value="word">Word</option>
+      </select>
+
+      <div class="icons right">
+        <img id="info" class="icon" src="icons\Info.svg" title="About" onclick="show_info()"/>
+        <img class="icon" src="icons\Exit.svg" title="Close Tab" onclick="close_app()"/>
+      </div>
+    </div>
+
+    <div class="trithemiusContainer">
+      <div id="linearValues" class="linearContainer" hidden>
+        <label class="linearLabel">A: <input id = "A" class="value linear" type="number" min="1" max="10" placeholder="1" title="A" /></label>
+        <label class="linearLabel">B: <input id = "B" class="value linear" type="number" min="1" max="10" placeholder="1" title="B" /></label>
+        <label class="linearLabel">C: <input id = "C" class="value linear" type="number" min="1" max="10" placeholder="1" title="C" /></label>
+      </div>
+
+      <label id="wordLable" style="width: 20%;" hidden>
+        Word: <input id = "Word" class="value" type="text" placeholder="Hello" title="Word" />
+      </label>
+    </div>
+
+    <div class="container">
+      <textarea id="textbox" placeholder="Type something here" wrap="hard"></textarea>
+    </div>
+
+    <input id="imgupload" type="file" style="display:none"/> 
+
+    <script src="./node_modules/crypto-js/crypto-js.js"></script>
+    <script src="./node_modules/crypto-js/mode-ecb.js"></script>
+    <script src="./script.js"></script>
+    <script src="./algorythms/caesar.js"></script>
+    <script src="./algorythms/trithemius.js"></script>
+    <script src="./algorythms/xor.js"></script>
+    <script src="./algorythms/cryptoLib.js"></script>
+  </body>
+</html>

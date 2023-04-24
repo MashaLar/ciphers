@@ -1,0 +1,19 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "directories": {
+    "test": "tests",
+    "algorythms": "algorythms"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Mariia Larykova",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "jest": "^29.5.0"
+  }
+}
